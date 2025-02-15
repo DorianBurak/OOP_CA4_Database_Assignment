@@ -69,7 +69,44 @@ public class Main {
         public void setDaiteIncurred(Date daiteIncurred) {
             this.daiteIncurred = daiteIncurred;
         }
+    }
 
+    class Income{
+        private int incomeId;
+        private String title;
+        private double amount;
+        private Date dateEarned;
 
+        public Income(int incomeId, String title, double amount, Date dateEarned) {
+            this.incomeId = incomeId;
+            this.title = title;
+            this.amount = amount;
+            this.dateEarned = dateEarned;
+        }
+
+        public int getIncomeId() {
+            return incomeId;
+        }
+        public void setIncomeId(int incomeId) {
+            this.incomeId = incomeId;
+        }
+        public String getTitle() {
+            return title;
+        }
+        public void setTitle(String title) {
+            this.title = title;
+        }
+        public double getAmount() {
+            return amount;
+        }
+        public void setAmount(double amount) {
+            this.amount = amount;
+        }
+        public Date getDateEarned() {
+            return dateEarned;
+        }
+        public void setDateEarned(Date dateEarned) {
+            this.dateEarned = dateEarned;
+        }
     }
 }
