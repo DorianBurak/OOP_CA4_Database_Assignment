@@ -24,6 +24,9 @@ public class Main {
             System.out.println("Income:");
             printIncome(conn);
 
+            System.out.println("Months Expenditures:");
+            printExpenditures(conn);
+
             System.out.println("Disconnected from database");
         }
         catch (SQLException e) {
@@ -182,6 +185,33 @@ public class Main {
                 System.out.printf("ID: %d | Title: %s | Amount: €%.2f | Date: %s\n", incomeId, title, amount, amount, dateEarned);
             }
             System.out.println("The total incomes is: " + totalIncomes);
+        }
+    }
+
+    private void printExpenditures(Connection conn) throws SQLException {
+        String selectExpenses = "SELECT * FROM expenses";
+        String selectIncome = "SELECT * FROM income";
+        double expenseAmount = 0.0;
+        double incomeAmount = 0.0;
+        double totalExpenditures = 0.0;
+        try (PreparedStatement pstmt = conn.prepareStatement(selectExpenses)) {
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                double amount = rs.getDouble("amount");
+                Date dateIncurred = rs.getDate("dateIncurred");
+                expenseAmount += amount;
+                System.out.printf("Expense Amount: €%.2f | Date: %s\n", amount, dateIncurred);
+            }
+            PreparedStatement pstmt2 = conn.prepareStatement(selectIncome);
+            ResultSet rs2 = pstmt2.executeQuery();
+            while (rs2.next()) {
+                double amount = rs.getDouble("amount");
+                Date dateEarned = rs.getDate("dateEarned");
+                incomeAmount += amount;
+                System.out.printf("Income Amount: €%.2f | Date: %s\n", amount, dateEarned);
+            }
+            totalExpenditures = incomeAmount - expenseAmount;
+            System.out.println("The total expenditures is: " + totalExpenditures);
         }
     }
 }
