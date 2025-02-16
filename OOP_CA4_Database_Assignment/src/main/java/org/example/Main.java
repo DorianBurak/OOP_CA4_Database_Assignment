@@ -123,6 +123,7 @@ public class Main {
         String selectAll = "SELECT * FROM expenses";
         String addExpense = "INSERT INTO oop_ca4_database_assignment.expenses Values (?,?,?,?,?)";
         String deleteExpense = "DELETE FROM oop_ca4_database_assignment.expenses WHERE expenseId = ?";//https://stackoverflow.com/questions/21542825/java-sql-delete-row
+        Double totalExpenses = 0.0;
         try (PreparedStatement pstmt = conn.prepareStatement(addExpense)) {
 //            pstmt.setInt(1, 6);
 //            pstmt.setString(2, "Leap Card");
@@ -144,9 +145,11 @@ public class Main {
                 String category = rs.getString("category");
                 double amount = rs.getDouble("amount");
                 Date dateIncurred = rs.getDate("dateIncurred");
+                totalExpenses += amount;
 
                 System.out.printf("ID: %d | Title: %s | Category: %s | Amount: €%.2f | Date: %s\n", expenseId, title, category, amount, dateIncurred);
             }
+            System.out.println("The total expense is: " + totalExpenses);
         }
     }
 
@@ -154,6 +157,7 @@ public class Main {
         String selectAll = "SELECT * FROM income";
         String addIncome = "INSERT INTO oop_ca4_database_assignment.income Values (?,?,?,?)";
         String deleteIncome = "DELETE FROM oop_ca4_database_assignment.income WHERE incomeid = ?";//https://stackoverflow.com/questions/21542825/java-sql-delete-row
+        Double totalIncomes = 0.0;
         try (PreparedStatement pstmt = conn.prepareStatement(addIncome)) {
 //            pstmt.setInt(1, 6);
 //            pstmt.setString(2, "Money Found");
@@ -173,9 +177,11 @@ public class Main {
                 String title = rs.getString("title");
                 double amount = rs.getDouble("amount");
                 Date dateEarned = rs.getDate("dateEarned");
+                totalIncomes += amount;
 
                 System.out.printf("ID: %d | Title: %s | Amount: €%.2f | Date: %s\n", incomeId, title, amount, amount, dateEarned);
             }
+            System.out.println("The total incomes is: " + totalIncomes);
         }
     }
 }
