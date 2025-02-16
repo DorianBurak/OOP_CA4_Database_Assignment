@@ -121,13 +121,19 @@ public class Main {
 
     private void printExpenses(Connection conn) throws SQLException {
         String selectAll = "SELECT * FROM expenses";
-        String addExpense = "INSERT INTO oop_ca4_database_assignment.expenses Values (null,?,?,?,?)";
+        String addExpense = "INSERT INTO oop_ca4_database_assignment.expenses Values (?,?,?,?,?)";
+        String deleteExpense = "DELETE FROM oop_ca4_database_assignment.expenses WHERE expenseId = ?";//https://stackoverflow.com/questions/21542825/java-sql-delete-row
         try (PreparedStatement pstmt = conn.prepareStatement(addExpense)) {
-//            pstmt.setString(1, "Leap Card");
-//            pstmt.setString(2, "Travel");
-//            pstmt.setDouble(3, 12.50);
-//            pstmt.setDate(4, new Date(2025-01-24));
+//            pstmt.setInt(1, 6);
+//            pstmt.setString(2, "Leap Card");
+//            pstmt.setString(3, "Travel");
+//            pstmt.setDouble(4, 12.50);
+//            pstmt.setDate(5, new Date(2025-01-24));
 //            pstmt.executeUpdate();
+
+//            PreparedStatement pstmt1 = conn.prepareStatement(deleteExpense);
+//            pstmt1.setInt(1,6);
+//            pstmt1.executeUpdate();
 
             Statement stmt = conn.createStatement();
 
@@ -146,12 +152,18 @@ public class Main {
 
     private void printIncome(Connection conn) throws SQLException {
         String selectAll = "SELECT * FROM income";
-        String addIncome = "INSERT INTO oop_ca4_database_assignment.income Values (null,?,?,?)";
+        String addIncome = "INSERT INTO oop_ca4_database_assignment.income Values (?,?,?,?)";
+        String deleteIncome = "DELETE FROM oop_ca4_database_assignment.income WHERE incomeid = ?";//https://stackoverflow.com/questions/21542825/java-sql-delete-row
         try (PreparedStatement pstmt = conn.prepareStatement(addIncome)) {
-//            pstmt.setString(1, "Money Found");
-//            pstmt.setDouble(2, 10);
-//            pstmt.setDate(3, new Date(2025-01-11));
+//            pstmt.setInt(1, 6);
+//            pstmt.setString(2, "Money Found");
+//            pstmt.setDouble(3, 10);
+//            pstmt.setDate(4, new Date(2025-01-11));
 //            pstmt.executeUpdate();
+
+//            PreparedStatement pstmt1 = conn.prepareStatement(deleteIncome);
+//            pstmt1.setInt(1,6);
+//            pstmt1.executeUpdate();
 
             Statement stmt = conn.createStatement();
 
